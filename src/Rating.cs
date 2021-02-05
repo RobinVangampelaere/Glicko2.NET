@@ -59,73 +59,40 @@
         /// Return the average skill value of the player.
         /// </summary>
         /// <returns></returns>
-        public double GetRating()
-        {
-            return _rating;
-        }
+        public double GetRating() => _rating;
 
-        public void SetRating(double rating)
-        {
-            _rating = rating;
-        }
+        public void SetRating(double rating) => _rating = rating;
 
         /// <summary>
         /// Return the average skill value of the player scaled down
 	    /// to the scale used by the algorithm's internal workings.
         /// </summary>
         /// <returns></returns>
-        public double GetGlicko2Rating()
-        {
-            return _ratingSystem.ConvertRatingToGlicko2Scale(_rating);
-        }
+        public double GetGlicko2Rating() => _ratingSystem.ConvertRatingToGlicko2Scale(_rating);
 
         /// <summary>
         /// Set the average skill value, taking in a value in Glicko2 scale.
         /// </summary>
         /// <param name="rating"></param>
-        public void SetGlicko2Rating(double rating)
-        {
-            _rating = _ratingSystem.ConvertRatingToOriginalGlickoScale(rating);
-        }
+        public void SetGlicko2Rating(double rating) => _rating = _ratingSystem.ConvertRatingToOriginalGlickoScale(rating);
 
-        public double GetVolatility()
-        {
-            return _volatility;
-        }
-
-        public void SetVolatility(double volatility)
-        {
-            _volatility = volatility;
-        }
-
-        public double GetRatingDeviation()
-        {
-            return _ratingDeviation;
-        }
-
-        public void SetRatingDeviation(double ratingDeviation)
-        {
-            _ratingDeviation = ratingDeviation;
-        }
+        public double GetVolatility() => _volatility;
+        public void SetVolatility(double volatility) => _volatility = volatility;
+        public double GetRatingDeviation() => _ratingDeviation;
+        public void SetRatingDeviation(double ratingDeviation) => _ratingDeviation = ratingDeviation;
 
         /// <summary>
         /// Return the rating deviation of the player scaled down
 	    /// to the scale used by the algorithm's internal workings.
         /// </summary>
         /// <returns></returns>
-        public double GetGlicko2RatingDeviation()
-        {
-            return _ratingSystem.ConvertRatingDeviationToGlicko2Scale(_ratingDeviation);
-        }
+        public double GetGlicko2RatingDeviation() => _ratingSystem.ConvertRatingDeviationToGlicko2Scale(_ratingDeviation);
 
         /// <summary>
         /// Set the rating deviation, taking in a value in Glicko2 scale.
         /// </summary>
         /// <param name="ratingDeviation"></param>
-        public void SetGlicko2RatingDeviation(double ratingDeviation)
-        {
-            _ratingDeviation = _ratingSystem.ConvertRatingDeviationToOriginalGlickoScale(ratingDeviation);
-        }
+        public void SetGlicko2RatingDeviation(double ratingDeviation) => _ratingDeviation = _ratingSystem.ConvertRatingDeviationToOriginalGlickoScale(ratingDeviation);
 
         /// <summary>
         /// Used by the calculation engine, to move interim calculations into their "proper" places.
@@ -141,29 +108,10 @@
             SetWorkingVolatility(0);
         }
 
-        public int GetNumberOfResults()
-        {
-            return _numberOfResults;
-        }
-
-        public void IncrementNumberOfResults(int increment)
-        {
-            _numberOfResults = _numberOfResults + increment;
-        }
-
-        public void SetWorkingVolatility(double workingVolatility)
-        {
-            _workingVolatility = workingVolatility;
-        }
-
-        public void SetWorkingRating(double workingRating)
-        {
-            _workingRating = workingRating;
-        }
-
-        public void SetWorkingRatingDeviation(double workingRatingDeviation)
-        {
-            _workingRatingDeviation = workingRatingDeviation;
-        }
+        public int GetNumberOfResults() => _numberOfResults;
+        public void IncrementNumberOfResults(int increment) => _numberOfResults += increment;
+        public void SetWorkingVolatility(double workingVolatility) => _workingVolatility = workingVolatility;
+        public void SetWorkingRating(double workingRating) => _workingRating = workingRating;
+        public void SetWorkingRatingDeviation(double workingRatingDeviation) => _workingRatingDeviation = workingRatingDeviation;
     }
 }

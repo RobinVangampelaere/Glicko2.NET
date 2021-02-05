@@ -23,11 +23,7 @@ namespace Glicko2
         /// <param name="isDraw"></param>
         public Result(Rating winner, Rating loser, bool isDraw = false)
         {
-            if (!ValidPlayers(winner, loser))
-            {
-                throw new ArgumentException("Players winner and loser are the same player");
-            }
-
+            if (!ValidPlayers(winner, loser)) throw new ArgumentException("Players winner and loser are the same player");
             _winner = winner;
             _loser = loser;
             _isDraw = isDraw;
@@ -39,20 +35,14 @@ namespace Glicko2
         /// <param name="player1"></param>
         /// <param name="player2"></param>
         /// <returns></returns>
-        private static bool ValidPlayers(Rating player1, Rating player2)
-        {
-            return player1 != player2;
-        }
+        private static bool ValidPlayers(Rating player1, Rating player2) => player1 != player2;
 
         /// <summary>
         /// Test whether a particular player participated in the match represented by this result.
         /// </summary>
         /// <param name="player"></param>
         /// <returns></returns>
-        public bool Participated(Rating player)
-        {
-            return player == _winner || player == _loser;
-        }
+        public bool Participated(Rating player) => player == _winner || player == _loser;
 
         /// <summary>
         /// Returns the "score" for a match.
@@ -62,25 +52,10 @@ namespace Glicko2
         public double GetScore(Rating player)
         {
             double score;
-
-            if (_winner == player)
-            {
-                score = PointsForWin;
-            }
-            else if (_loser == player)
-            {
-                score = PointsForLoss;
-            }
-            else
-            {
-                throw new ArgumentException("Player did not participate in match", "player");
-            }
-
-            if (_isDraw)
-            {
-                score = PointsForDraw;
-            }
-
+            if (_winner == player) score = PointsForWin;
+            else if (_loser == player) score = PointsForLoss;
+            else throw new ArgumentException("Player did not participate in match", "player");
+            if (_isDraw) score = PointsForDraw;
             return score;
         }
 
@@ -92,31 +67,13 @@ namespace Glicko2
         public Rating GetOpponent(Rating player)
         {
             Rating opponent;
-
-            if (_winner == player)
-            {
-                opponent = _loser;
-            }
-            else if (_loser == player)
-            {
-                opponent = _winner;
-            }
-            else
-            {
-                throw new ArgumentException("Player did not participate in match", "player");
-            }
-
+            if (_winner == player) opponent = _loser;
+            else if (_loser == player) opponent = _winner;
+            else throw new ArgumentException("Player did not participate in match", "player");
             return opponent;
         }
 
-        public Rating GetWinner()
-        {
-            return _winner;
-        }
-
-        public Rating GetLoser()
-        {
-            return _loser;
-        }
+        public Rating GetWinner() => _winner;
+        public Rating GetLoser() => _loser;
     }
 }

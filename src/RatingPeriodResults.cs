@@ -13,9 +13,7 @@ namespace Glicko2
         /// <summary>
         /// Create an empty result set.
         /// </summary>
-        public RatingPeriodResults()
-        {
-        }
+        public RatingPeriodResults() { }
 
         /// <summary>
         /// Constructor that allows you to initialise the list of participants.
@@ -34,7 +32,6 @@ namespace Glicko2
         public void AddResult(Rating winner, Rating loser)
         {
             var result = new Result(winner, loser);
-
             _results.Add(result);
         }
 
@@ -46,7 +43,6 @@ namespace Glicko2
         public void AddDraw(Rating player1, Rating player2)
         {
             var result = new Result(player1, player2, true);
-
             _results.Add(result);
         }
 
@@ -58,15 +54,7 @@ namespace Glicko2
         public IList<Result> GetResults(Rating player)
         {
             var filteredResults = new List<Result>();
-
-            foreach (var result in _results)
-            {
-                if (result.Participated(player))
-                {
-                    filteredResults.Add(result);
-                }
-            }
-
+            foreach (var result in _results)  if (result.Participated(player)) filteredResults.Add(result);
             return filteredResults;
         }
 
@@ -82,7 +70,6 @@ namespace Glicko2
                 _participants.Add(result.GetWinner());
                 _participants.Add(result.GetLoser());
             }
-
             return _participants;
         }
 
@@ -91,17 +78,11 @@ namespace Glicko2
         /// still be calculated even if they don't actually compete.
         /// </summary>
         /// <param name="rating"></param>
-        public void AddParticipant(Rating rating)
-        {
-            _participants.Add(rating);
-        }
+        public void AddParticipant(Rating rating) => _participants.Add(rating);
 
         /// <summary>
         /// Clear the result set.
         /// </summary>
-        public void Clear()
-        {
-            _results.Clear();
-        }
+        public void Clear() => _results.Clear();
     }
 }

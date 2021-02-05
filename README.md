@@ -1,6 +1,9 @@
 ﻿# Glicko2
 
-C# implementation of the Glicko-2 rating algorithm. This is a C# port of [goochjs/glicko2](https://github.com/goochjs/glicko2).
+C# implementation of the Glicko-2 rating algorithm package for .NET Standard 2.1
+
+- This is a C# port of [goochjs/glicko2](https://github.com/goochjs/glicko2).
+- This is forked from [glicko2-csharp](https://github.com/MaartenStaa/glicko2-csharp), written for .Net Framework.
 
 ## Usage
 
