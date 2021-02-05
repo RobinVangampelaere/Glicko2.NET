@@ -51,11 +51,3 @@ for (var index = 0; index < players.Length; index++)
 		player.GetRatingDeviation() + ", " + player.GetVolatility();
 }
 ```
-
-## Building on .NET Core
-
-You can also build glicko2-csharp for .NET Core. To do this, run:
-```
-dotnet restore
-dotnet build -c Release
-```
